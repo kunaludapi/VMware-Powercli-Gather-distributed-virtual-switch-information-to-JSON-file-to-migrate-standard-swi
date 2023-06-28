@@ -161,5 +161,6 @@ Process {
     }#foreach ($ESXi in $EsxiHosts) {
 } #Process
 End {
+    $XmlFile = $JsonFile -Replace 'json', 'xml'; $OverAllInfo | Export-CliXml -Path $XmlFile
     $OverAllInfo | ConvertTo-Json | Out-File -FilePath $JsonFile
 } #End
